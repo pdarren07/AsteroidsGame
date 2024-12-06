@@ -1,60 +1,59 @@
-//your variable declarations here
-boolean wPressed = false;
-boolean aPressed = false;
-boolean dPressed = false;
-Spaceship bob;
-Star []spaceSky = new Star[300];
+Spaceship l = new Spaceship();
+Star[] m = new Star[80];
+ArrayList <Bullet> n = new ArrayList <Bullet> ();
+ArrayList <Asteroid> o = new ArrayList <Asteroid> ();
 public void setup() 
 {
-  size(600,600);
-  background(0);
-  bob = new Spaceship(300,300);
-  //your code here
-  for ( int i = 0; i < spaceSky.length; i++){
-  spaceSky[i] = new Star();
-  }
+  size(800, 800);
+  for (int i = 0; i<m.length; i++)
+    m[i] = new Star();
+  for (int i = 0; i<20; i++) 
+    o.add(new Asteroid());
 }
 public void draw() 
 {
-  background(0);
-  for (int i = 0; i < spaceSky.length; i++){
-  spaceSky[i].show();
+  background(20);
+  noStroke();
+  for (int i = 0; i<m.length; i++) {
+    m[i].display();
+    m[i].reset();
   }
-  if (wPressed == true){
-    bob.accelerate(.5);
+  for (int i = 0; i<o.size(); i++) {
+    o.get(i).show();
+    o.get(i).move();
+    float d = dist((float)l.getX(), (float)l.getY(), (float)o.get(i).getX(), (float)o.get(i).getY());
+    if (d<38)
+      o.remove(i);
   }
-  if (dPressed == true){
-    bob.turn(5);
+  for(int i = 0; i < n.size(); i++){
+    n.get(i).move();
+    n.get(i).show();
+    for(int j = 0; j < o.size(); j++){
+    float d = dist((float)n.get(i).getX(), (float)n.get(i).getY(), (float)o.get(j).getX(), (float)o.get(j).getY());
+    if(d<40){
+      n.remove(i);
+      o.remove(j);
+      break;
+      }
+    }
+  
   }
-  if (aPressed == true){
-    bob.turn(-5);
-  }
-  bob.move();
-  bob.show(); 
+  l.show();
+  l.move();
 }
-public void keyPressed(){
-  if ( key == 'w'){
-    wPressed = true;
-  }  
-  if ( key == 'a'){
-    aPressed = true;
-  }
-  if ( key == 'd'){
-    dPressed = true; 
-  }
-  if ( key == 'h'){
-  bob.hyperspace();  
-  }
-}
-
-public void keyReleased(){
-  if ( key == 'w'){
-    wPressed = false;
-  }  
-  if ( key == 'a'){
-    aPressed = false;
-  }
-  if ( key == 'd'){
-    dPressed = false; 
+public void keyPressed()
+{
+    if (key == 's')
+      l.accelerate(1);
+    if (key == 'w')
+      l.accelerate(-1);
+    if (key == 'd')
+      l.turn(30);
+    if (key == 'a')
+      l.turn(-30);
+    if (key == 'h')
+      l.hyperSpace();
+    if (key == 'f'){
+      n.add(new Bullet(l));
   }
 }
