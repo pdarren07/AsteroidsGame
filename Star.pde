@@ -1,6 +1,7 @@
 class Star
 {
-  private int myEllipse, myStarX, myStarY, myStarSpeed, myColor;
+  private int myEllipse, myStarX, myStarY, myStarSpeed;
+  private color myColor;
   private int[] starColors = {
         color(255, 255, 255), color(240, 240, 240), color(230, 230, 230),
         color(220, 220, 220), color(210, 210, 210), color(200, 200, 200),
