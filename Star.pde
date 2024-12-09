@@ -1,4 +1,4 @@
-class Star //note that this class does NOT extend Floater
+class Star
 {
   private int myEllipse, myStarX, myStarY, myStarSpeed, myColor;
   private int[] starColors = {
@@ -17,9 +17,9 @@ class Star //note that this class does NOT extend Floater
   }
   public void reset()
   {
-    myStarY += myStarSpeed;
-     if (myStarY > 850) 
-       myStarY = -100;
+    myStarX += myStarSpeed;
+     if (myStarX > 850) 
+       myStarX = -100;
   }
   public void display()
   {
