@@ -18,17 +18,17 @@ public void draw()
     m[i].display();
     m[i].reset();
   }
-  for (int i = o.size(); i >= 0; i--) {
+  for (int i = o.size()-1; i >= 0; i--) {
     o.get(i).show();
     o.get(i).move();
     float d = dist((float)l.getX(), (float)l.getY(), (float)o.get(i).getX(), (float)o.get(i).getY());
     if (d<38)
       o.remove(i);
   }
-  for(int i = n.size(); i >= 0; i--){
+  for(int i = n.size()-1; i >= 0; i--){
     n.get(i).move();
     n.get(i).show();
-    for(int j = o.size(); j >= 0; j--){
+    for(int j = o.size()-1; j >= 0; j--){
     float d = dist((float)n.get(i).getX(), (float)n.get(i).getY(), (float)o.get(j).getX(), (float)o.get(j).getY());
     if(d<40){
       n.remove(i);
