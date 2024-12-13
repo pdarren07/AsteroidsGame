@@ -25,10 +25,10 @@ public void draw()
     if (d<38)
       o.remove(i);
   }
-  for(int i = 0; i < n.size(); i++){
+  for(int i = n.size(); i >= 0; i--){
     n.get(i).move();
     n.get(i).show();
-    for(int j = 0; j < o.size(); j++){
+    for(int j = o.size(); j >= 0; j--){
     float d = dist((float)n.get(i).getX(), (float)n.get(i).getY(), (float)o.get(j).getX(), (float)o.get(j).getY());
     if(d<40){
       n.remove(i);
