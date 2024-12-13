@@ -18,7 +18,7 @@ public void draw()
     m[i].display();
     m[i].reset();
   }
-  for (int i = 0; i<o.size(); i++) {
+  for (int i = o.size(); i >= 0; i--) {
     o.get(i).show();
     o.get(i).move();
     float d = dist((float)l.getX(), (float)l.getY(), (float)o.get(i).getX(), (float)o.get(i).getY());
